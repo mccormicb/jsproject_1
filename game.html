@@ -6,6 +6,7 @@
     </head>
     <body>
         <script>
+            //generates computer choice
             function computerPlay() {
                 const ranNum = Math.floor(Math.random() * 3);
                 if (ranNum === 0) {
@@ -18,11 +19,12 @@
             };
 
             const computerChoice = computerPlay();
-            console.log(computerChoice);
+            // console.log(computerChoice);      lets you see computer choice before player choice entered.   
 
         var playerChoice = prompt('please enter rock, paper or scissors.');
             playerChoice = playerChoice.toLowerCase();
-
+            
+            //  compares playerChoice and computerChoice
             function playRound(playerChoice, computerChoice) {
                 if ((playerChoice === 'rock' && computerChoice === 'scissors') || (playerChoice === 'paper' && computerChoice === 'rock') ||
                     (playerChoice === 'scissors' && computerChoice === 'paper')) {
