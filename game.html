@@ -21,22 +21,100 @@
             const computerChoice = computerPlay();
             // console.log(computerChoice);      lets you see computer choice before player choice entered.   
 
-        var playerChoice = prompt('please enter rock, paper or scissors.');
-            playerChoice = playerChoice.toLowerCase();
+        
             
+
             //  compares playerChoice and computerChoice
             function playRound(playerChoice, computerChoice) {
-                if ((playerChoice === 'rock' && computerChoice === 'scissors') || (playerChoice === 'paper' && computerChoice === 'rock') ||
-                    (playerChoice === 'scissors' && computerChoice === 'paper')) {
-                        return 'you win.'
-                    } else if (playerChoice === computerChoice){
-                        return 'Its a draw'
+                var winMsg = 'You win! ' + playerChoice + ' beats ' + computerChoice + '!';
+                var loseMsg = 'You Lose! ' + computerChoice + ' beats ' + playerChoice;
+                var drawMsg = 'Its a draw!'
+
+               var playerChoice;
+                
+                if (playerChoice === 'rock') {
+                    if (computerChoice === 'scissors') {
+                        console.log(winMsg);
+                        return winMsg
+                    } else if (computerChoice === 'paper') {
+                        console.log(loseMsg);
+                        return loseMsg
                     } else {
-                        return 'you lose'
+                        console.log(drawMsg);
+                        return drawMsg
                     }
+                } else if (playerChoice === 'paper') {
+                    if (computerChoice === 'rock') {
+                        console.log(winMsg);
+                        return winMsg
+                    } else if (computerChoice === 'scissors') {
+                        console.log(loseMsg);
+                        return loseMsg
+                    } else {
+                        console.log(drawMsg);
+                        return drawMsg
+                    }
+                }   else if (playerChoice === 'scissors') {
+                        if (computerChoice === 'paper') {
+                            console.log(winMsg);
+                            return winMsg
+                        } else if (computerChoice === 'rock') {
+                            console.log(loseMsg);
+                            return loseMsg
+                        } else {
+                            console.log(drawMsg);
+                            return drawMsg
+                        }
+                }
             }
-            var game = playRound(playerChoice, computerChoice);
-            console.log(game);
+
+            
+        
+            function game() {
+            
+            var round;
+            var playerScore = 0
+            var computerScore = 0
+            var draws = 0
+            
+
+                for (let round = 0; round < 5; round++){
+                    let computerChoice = computerPlay();
+                    let playerChoice = prompt('please enter rock, paper or scissors.');
+                    playerChoice = playerChoice.toLowerCase();
+                    var outcome = playRound(playerChoice, computerChoice);
+
+                    var winMsg = 'You win! ' + playerChoice + ' beats ' + computerChoice + '!';
+                var loseMsg = 'You Lose! ' + computerChoice + ' beats ' + playerChoice;
+                var drawMsg = 'Its a draw!'
+
+                        if (outcome === winMsg) {
+                            playerScore++
+                            console.log('You: ' + playerScore);
+                            console.log('PC: ' + computerScore);
+                        } else if (outcome === loseMsg) {
+                            computerScore++
+                            console.log('You: ' + playerScore);
+                            console.log('PC: ' + computerScore);
+                        } else {
+                            console.log(playerScore);
+                            console.log(computerScore);
+                        }
+                }
+                if (playerScore > computerScore) {
+                    console.log('You win! Your score was: ' + playerScore + ' and the computers score was: ' + computerScore);
+                } else if (playerScore < computerScore){
+                    console.log('You lose to the computer! Your score was: '  + playerScore + ' and the computer score was: ' + computerScore);
+                } else {
+                    console.log('You tied with the computer!')
+                }
+            }
+
+            var declareWinner = game();
+            
+            
+
+            
         </script>
     </body>
 </html>
